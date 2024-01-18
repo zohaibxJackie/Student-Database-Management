@@ -1,0 +1,22 @@
+<%- include('partials/head.ejs') %>
+    <div class="main flex">
+        <%- include('partials/nav.ejs') %>
+        <div class="hero-right uni-flex">
+            <div class="hero-inner uni-flex">
+                <div class="hero-main uni-flex">
+                    <form action="/search_result" method="post" class="reg-form uni-flex f-d-c gap-1">
+
+                        <div class="field-1">
+                            <label for="searchbox">Enter Roll no</label>
+                            <input type="number" name="search" id="searchbox" placeholder="search by roll no" required>
+                        </div>
+                        <div class="field-3">
+                            <button type="submit" class="button">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/script.js"></script>
+<%- include('partials/foot.ejs') %>

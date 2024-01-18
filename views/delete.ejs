@@ -1,0 +1,23 @@
+<%- include('partials/head.ejs') %>
+    <div class="main flex">
+        <%- include('partials/nav.ejs') %>
+        <div class="hero-right uni-flex">
+            <div class="hero-inner uni-flex">
+                <div class="hero-main uni-flex">
+                    <form action="/delete" method="post" class="reg-form uni-flex f-d-c gap-1">
+
+                        <div class="field-1">
+                            <label for="rr">Enter Roll no</label>
+                            <input type="number" name="roll_num" placeholder="Enter the Roll no." id="rr" required autofocus>
+                        </div>
+                        <div class="field-3">
+                            <button type="submit" class="button">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/script.js"></script>
+<%- include('partials/foot.ejs') %>
+

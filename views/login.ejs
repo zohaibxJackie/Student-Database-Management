@@ -1,0 +1,24 @@
+<%- include('partials/head.ejs') %>
+<main class="uni-flex" style="min-height: 100vh;">
+    <div class="hero-main uni-flex">
+        <form action="/login" method="post" class="reg-form uni-flex f-d-c gap-1">
+             <div class="field-1">
+                 <label for="username">Enter your name:</label>
+                 <input type="text" name="username" id="username" placeholder="enter name" required autofocus>
+             </div>
+             
+             <div class="field-2">
+                 <label for="password">Enter your password</label>
+                 <input type="password" name="password" id="password" placeholder="enter password" required>
+             </div>
+             <% if (error) {%><p class="error"><%=error%></p><%} %>
+             <div class="field-3">
+                 <button type="submit" class="button">Login</button>
+             </div>
+             <div class="field-4">
+                <p>Or register new <a href="/register">admin account</a></p>
+             </div>
+         </form>
+     </div>
+</main>
+<%- include('partials/foot.ejs') %>

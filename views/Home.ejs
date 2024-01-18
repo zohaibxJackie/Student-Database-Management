@@ -1,0 +1,25 @@
+<%- include('partials/head.ejs') %>
+    <div class="main flex">
+        <%- include('partials/nav.ejs') %>
+        <div class="hero-right uni-flex">
+            <div class="hero-inner uni-flex">
+                <div class="hero-main uni-flex">
+                   <form action="/registerStudent" method="post" class="reg-form uni-flex f-d-c gap-1">
+                        <div class="field-1">
+                            <label for="name">Enter the name:</label>
+                            <input type="text" name="name" id="name" placeholder="enter name" required>
+                        </div>
+                        
+                        <div class="field-2">
+                            <label for="rollNumber">Enter Roll No.</label>
+                            <input type="number" name="rollNumber" id="rollNumber" placeholder="enter roll no." required>
+                        </div>
+                        <div class="field-3">
+                            <button type="submit" class="button">Create</button>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+<%- include('partials/foot.ejs') %>

@@ -1,0 +1,48 @@
+<!-- register admin -->
+<%- include('partials/head.ejs') %>
+<main class="uni-flex" style="min-height: 100vh;">
+    <div class="hero-main uni-flex">
+        <form action="/register" method="post" class="reg-form uni-flex f-d-c gap-1">
+             <div class="field-1">
+                 <label for="key">Admin Key</label>
+                 <input type="password" name="adminKey" id="key" placeholder="Enter your secret key" required>
+             </div>
+             
+             <div class="field-2">
+                 <label for="username">Enter your name</label>
+                 <input type="text" name="username" id="username" placeholder="enter username" required>
+             </div>
+             <div class="field-2">
+              <label for="password">Enter your password</label>
+              <input type="password" name="password" id="password" placeholder="enter password" required>
+            </div>
+            <div class="field-3">
+               <button type="submit" class="button">Register</button>
+              </div>
+
+              <div class="field-4">
+                <p>Or <a href="/login">Login</a></p>
+              </div>
+         </form>
+     </div>
+</main>
+<%- include('partials/foot.ejs') %>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/register" method="post">
+    <input type="text" name="adminKey" placeholder="key">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Register">
+  </form>
+  <a href="/login">Login</a>
+</body>
+</html> -->

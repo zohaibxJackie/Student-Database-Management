@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cinzel', serif;
+}
+
+/* Stop animation during the resizing */
+.resize-animation-stopper * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/* set up the body */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Actual css starts from here */
+:root {
+  --bg-main-bg: #eff2f5;
+  --bg-light-blue: #c6eaff;
+  --bg-medium-blue: #a6daff;
+  --bg-active-button: #0085ff;
+  --bg-green-yellow: #ADFF2F;
+  --bg-danger: #ff0000;
+  --bg-font-white: #ffff;
+  --bg-white: #ffff;
+  --bg-font-black: #000000;
+  --font-size-small: 1.75rem;
+  --font-size-button: 2rem;
+  --font-bold: 600;
+  --btn-border-radius: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content {
+  justify-content: center;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.f-d-c {
+  flex-direction: column;
+}
+
+.uni-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.hero-left {
+  background-color: var(--bg-main-bg);
+  min-width: 20%;
+  min-height: 100vh;
+}
+
+.nav li {
+  list-style: none;
+  font-size: var(--font-size-button);
+}
+
+.nav-button {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  background-color: var(--bg-white);
+}
+
+.nav-button:hover {
+  background-color: var(--bg-green-yellow);
+}
+
+.active-bg {
+  background-color: var(--bg-active-button);
+  &:hover {
+    background-color: blue;
+  }
+}
+
+.hero-right {
+  background-color: var(--bg-white);
+  min-width: 80%;
+  min-height: 100%;
+}
+
+.hero-inner {
+  background-color: var(--bg-main-bg);
+  border-radius: 1rem;
+  height: 90%;
+  width: 90%;
+}
+
+.hero-main {
+  background-color: var(--bg-green-yellow);
+  border-radius: 1rem;
+  height: 25rem;
+  width: 20rem;
+}
+
+input {
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  border: 0;
+  outline: none;
+  padding: 0 20px;
+  font-size: 1.2rem;
+}
+
+.field-1,
+.field-2 {
+  display: inline-grid;
+}
+
+.field-3 {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.field-3 .button {
+  background-color: var(--bg-active-button);
+  cursor: pointer;
+  border: 0;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  font-weight: var(--font-bold);
+  color: var(--bg-white);
+  &:hover {
+    background-color: blue;
+  }
+}

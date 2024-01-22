@@ -7,43 +7,46 @@ var passport = require('passport');
 var localStrategy = require('passport-local');
 passport.use(new localStrategy(userModel.authenticate()));
 
+const upload = require('./multer')
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', {PageTitle: "Register Admin"});
+  res.render('index', { PageTitle: "Register Admin" });
 });
 
 router.get('/login', function (req, res) {
   res.render('login', { error: req.flash('error'), PageTitle: "Login" });
 });
 
-router.get('/home', isLoggedIn,function (req, res) {
-  res.render('Home', {PageTitle: "Home"});
+router.get('/home', isLoggedIn, function (req, res) {
+  res.render('Home', { PageTitle: "Home" });
 });
 
-router.get('/update', isLoggedIn,function (req, res, next) {
-  res.render('update', {PageTitle: "Upadate"});
+router.get('/update', isLoggedIn, function (req, res, next) {
+  res.render('update', { PageTitle: "Upadate" });
 });
 
-router.get('/delete',isLoggedIn, function (req, res, next) {
-  res.render('delete', {PageTitle: "Delete Student"});
+router.get('/delete', isLoggedIn, function (req, res, next) {
+  res.render('delete', { PageTitle: "Delete Student" });
 });
 
-router.get('/search',isLoggedIn, function (req, res, next) {
-  res.render('search', {PageTitle: "Search Student"});
+router.get('/search', isLoggedIn, function (req, res, next) {
+  res.render('search', { PageTitle: "Search Student" });
 });
 
 // register the student
-router.post('/registerStudent', async function (req, res) {
+router.post('/registerStudent',upload.single('image'), async function (req, res) {
   try {
     await studentModel.create({
       name: req.body.name,
-      rollNumber: req.body.rollNumber
+      rollNumber: req.body.rollNumber,
+      image: req.file.filename
     })
     res.redirect("/home")
   } catch (error) {
     if (error.code === 11000) {
       res.status(400).send("This Roll no. already exists")
     } else {
+      console.log(error)
       res.status(500).send("some error occurred")
     }
   }
@@ -51,9 +54,9 @@ router.post('/registerStudent', async function (req, res) {
 
 router.post('/search_result', async function (req, res) {
   try {
-    let result = await studentModel.findOne({ rollNumber: req.body.search })
+    let result = await studentModel.findOne({ rollNumber: req.body.search }).populate('image')
     if (result) {
-      res.render('result', { result: result.name, date: result.date });
+      res.render('result', { result });
     } else {
       res.send("No such student with this roll number");
     }
@@ -89,7 +92,6 @@ router.post('/delete', async function (req, res) {
     res.send("internet or server issue")
   }
 })
-
 
 // this is for admin only
 router.post('/register', function (req, res, next) {

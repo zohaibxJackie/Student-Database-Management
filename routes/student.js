@@ -11,6 +11,10 @@ const studentschema = mongoose.Schema({
     unique: true,
     trim: true
   },
+  image: {
+    type: String
+    // require: true
+  },
   date: {
     type: Date,
     default: Date.now

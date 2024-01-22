@@ -6,12 +6,24 @@
     <title>Showing Results</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body class="flex">
-    <div class="hero flex f-d-c">
-        <p>Following is the result of your query:</p>
-        <p>Student name : <%= result %></p>
-        <p>Admission date : <%= date %></p>
-        </p>          
+<body>
+    <div class="search-main">
+        <div class="body flex gap-2">
+            <div class="hero flex f-d-c gap-1">
+                <p>Student Match Successful</p>
+                <p><strong>Student name : <%= result.name %></strong></p>
+                <p><strong>Admission date : <%= result.date %></strong></p>
+                <div>
+                    <a href="/home" class="button">Return Home</a>         
+                    <a href="/search" class="button">Search More</a>         
+                </div>
+            </div>
+            <div class="student-image">
+                <div class="image-container">
+                    <img src="/images/<%= result.image %>" alt="Student Image">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

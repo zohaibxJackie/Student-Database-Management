@@ -1,3 +1,6 @@
+/* jshint esversion: 6 */
+/* jshint esversion: 8 */
+
 var express = require('express');
 var router = express.Router();
 var userModel = require('./users');
@@ -7,7 +10,7 @@ var passport = require('passport');
 var localStrategy = require('passport-local');
 passport.use(new localStrategy(userModel.authenticate()));
 
-const upload = require('./multer')
+const upload = require('./multer');
 /* GET home page. */
 router.get('/', function (req, res) {
   res.render('index', { PageTitle: "Register Admin" });
@@ -40,21 +43,21 @@ router.post('/registerStudent',upload.single('image'), async function (req, res)
       name: req.body.name,
       rollNumber: req.body.rollNumber,
       image: req.file.filename
-    })
-    res.redirect("/home")
+    });
+    res.redirect("/home");
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400).send("This Roll no. already exists")
+      res.status(400).send("This Roll no. already exists");
     } else {
-      console.log(error)
-      res.status(500).send("some error occurred")
+      console.log(error);
+      res.status(500).send("some error occurred");
     }
   }
 });
 
 router.post('/search_result', async function (req, res) {
   try {
-    let result = await studentModel.findOne({ rollNumber: req.body.search }).populate('image')
+    let result = await studentModel.findOne({ rollNumber: req.body.search }).populate('image');
     if (result) {
       res.render('result', { result });
     } else {
@@ -63,35 +66,35 @@ router.post('/search_result', async function (req, res) {
   } catch (error) {
     res.status(500).send("Internet or server errror");
   }
-})
+});
 
 router.post('/update', async function (req, res) {
   try {
     await studentModel.updateOne({ rollNumber: req.body.old_num }, { $set: { rollNumber: req.body.new_num } })
       .then(updatedUser => {
-        res.send("Student is updated successfully")
+        res.send("Student is updated successfully");
       })
       .catch(errror => {
-        res.send('some error occured')
-      })
+        res.send('some error occured');
+      });
   } catch (error) {
     router.send('Internet or server error');
   }
-})
+});
 
 router.post('/delete', async function (req, res) {
   try {
     await studentModel.deleteOne({ rollNumber: req.body.roll_num })
       .then(deleted => {
-        res.send("student deleted successfully")
+        res.send("student deleted successfully");
       })
       .catch(error => {
-        res.send("Roll number is invalid")
-      })
+        res.send("Roll number is invalid");
+      });
   } catch (error) {
-    res.send("internet or server issue")
+    res.send("internet or server issue");
   }
-})
+});
 
 // this is for admin only
 router.post('/register', function (req, res, next) {
@@ -106,15 +109,15 @@ router.post('/register', function (req, res, next) {
     .then(function () {
       passport.authenticate('local')(req, res, function () {
         res.redirect('/home');
-      })
-    })
-})
+      });
+    });
+});
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/home',
   failureRedirect: '/login',
   failureFlash: true
-}), function (res, req) { })
+}), function (res, req) { });
 
 router.get('/logout', function (req, res) {
   req.logout(function (err) {
